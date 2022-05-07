@@ -4,7 +4,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <nav></nav>
-      <main className="">
+      <main>
         <Component {...pageProps} />
       </main>
       <footer></footer>

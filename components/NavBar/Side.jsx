@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 import { CgProfile as Profile } from "react-icons/cg";
 import { FiSearch as Search } from "react-icons/fi";
@@ -29,11 +29,9 @@ const Side = () => {
                   >
                     <button
                       id="open"
-                      onClick={() => setShow(!show)}
+                      onClick={() => setShow(false)}
                       aria-label="open"
-                      className={`${
-                        show ? "" : "hidden"
-                      } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-800`}
+                      className={`${show ? "" : "hidden"} focus:outline-none`}
                     >
                       <svg
                         className="text-teal-500 w-8 h-8"
@@ -63,13 +61,22 @@ const Side = () => {
                         />
                       </svg>
                     </button>
+                  </div>
+                </div>
+                <div
+                  id="Main"
+                  className={`${
+                    show ? " -translate-x-96" : "-translate-x-6"
+                  } fixed left-6 bottom-0 top-0 bg-gray-50 transform ease-in-out transition duration-500 flex justify-between flex-col`}
+                >
+                  <div className="flex flex-col justify-start items-start p-8 pt-4 w-full space-y-5">
                     <button
                       id="close"
                       onClick={() => setShow(!show)}
                       aria-label="close"
                       className={`${
                         show ? "hidden" : ""
-                      } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800  flex flex-grow justify-end w-full relative z-10`}
+                      } focus:outline-none flex flex-grow justify-start w-full py-4 px-3`}
                     >
                       <svg
                         className="text-teal-500 w-8 h-8 block"
@@ -92,17 +99,7 @@ const Side = () => {
                         />
                       </svg>
                     </button>
-                  </div>
-                </div>
-
-                <div
-                  id="Main"
-                  className={`${
-                    show ? " -translate-x-96" : "-translate-x-6"
-                  } absolute top-20 l-0 bg-gray-50 transform ease-in-out transition duration-500 flex justify-start items-start w-fit h-fit flex-col`}
-                >
-                  <div className="flex flex-col justify-start items-start p-8 pt-4 w-full space-y-5">
-                    <div className=" relative focus:outline-none flex jusitfy-start w-full text-teal-800 rounded  items-center border-teal-300 focus:border-teal-300/75 sm:visible">
+                    <div className=" relative focus:outline-none flex jusitfy-start w-full text-teal-800 rounded items-center border-teal-300 focus:border-teal-300/75 sm:visible">
                       <input
                         type="text"
                         placeholder="Search"
@@ -146,8 +143,8 @@ const Side = () => {
                       <p className="text-base leading-4  ">Notifications</p>
                     </button>
                   </div>
-
-                  <div className="mt-36 flex  bg-teal-700 justify-start space-x-2 items-center h-full py-4 px-3.5    w-full  ">
+                  {/*Omit this one and change to log out button */}
+                  <div className="flex bg-teal-700 justify-start space-x-2 items-center py-4 px-3.5 w-full">
                     <div>
                       <img
                         src="https://i.ibb.co/fxrbS6p/Ellipse-2-2.png"

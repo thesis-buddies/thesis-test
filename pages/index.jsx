@@ -1,15 +1,11 @@
-import SignIn from "../components/SignIn";
-import SignUp from "../components/SignUp";
-import SignInVerification from "../components/SignInVerification";
-import SignUpVerification from "../components/SignUpVerification";
-import Sidebar from "../components/Sidebar";
-import NavBar from "../components/NavBar";
-import Side from "../components/Side";
+import Side from "../components/NavBar/Side";
+import SignIn from "../components/SignIn/SignIn";
+import SignInVerification from "../components/SignIn/SignInVerification";
 
 export default function Home() {
   return (
     <div>
-      <Side></Side>
+      <Side />
     </div>
   );
 }

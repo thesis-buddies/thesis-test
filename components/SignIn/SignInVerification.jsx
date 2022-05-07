@@ -27,6 +27,7 @@ const SignInVerification = () => {
               Please check and enter the 6 digit code (******) we have sent.
             </p>
           </div>
+          {/*QR Single number input to fix */}
           <div className=" flex flex-row flex-grow-0 space-x-3">
             <input
               className=" w-full border-2 border-slate-400/75 rounded-md"
@@ -66,9 +67,7 @@ const SignInVerification = () => {
             />
           </div>
           <div className="text-xs py-1 flex flex-col justify-center">
-            <p className="text-center">
-              Re-send confirmation code to 09123456789
-            </p>
+            <p className="text-center">Re-send confirmation code</p>
             <span className="flex flex-grow justify-center py-1">
               <button className=" text-white rounded-lg font-medium p-2 w-6/12 bg-teal-400 flex justify-center">
                 Please send again
