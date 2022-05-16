@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FiChevronRight } from "react-icons/fi";
+import { FiCheck, FiChevronLeft } from "react-icons/fi";
 
 const Step3 = ({
   currentStep,
@@ -75,15 +75,15 @@ const Step3 = ({
           onClick={previousStep}
           className="bg-blue-500 rounded p-1 text-white flex px-6 py-3"
         >
-          <FiChevronRight size="1.5rem" />
+          <FiChevronLeft size="1.5rem" />
           <p>Previous Step</p>
         </button>
         <button
           onClick={nextStep}
           className="bg-blue-500 rounded p-1 text-white flex px-6 py-3"
         >
-          <FiChevronRight size="1.5rem" />
-          <p>Next Step</p>
+          <FiCheck size="1.5rem" />
+          <p className="pl-1">Finish</p>
         </button>
       </div>
     </>
