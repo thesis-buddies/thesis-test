@@ -54,9 +54,6 @@ const MultistepForm = () => {
         <Step3 onFormChange={handleFormChange} />
       </StepWizard>
       <div className="max-w-xs">{JSON.stringify(formData)}</div>
-
-
-      <div></div>
     </>
   );
 };
