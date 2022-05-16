@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FiChevronRight } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Step2 = ({
   currentStep,
@@ -27,14 +27,14 @@ const Step2 = ({
           <input
             className="rounded border-1 outline-hidden outline-none outline-transparent"
             type="text"
-            name="name"
+            name="lastname"
             placeholder="Name"
             onChange={onFormChange}
           />
           <input
             className="rounded border-1 outline-hidden outline-none outline-transparent"
             type="text"
-            name="address"
+            name="address_1"
             placeholder="Address"
             onChange={onFormChange}
           />
@@ -106,7 +106,7 @@ const Step2 = ({
           onClick={previousStep}
           className="bg-blue-500 rounded p-1 text-white flex px-6 py-3"
         >
-          <FiChevronRight size="1.5rem" />
+          <FiChevronLeft size="1.5rem" />
           <p>Previous Step</p>
         </button>
         <button
