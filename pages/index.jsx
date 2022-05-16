@@ -24,7 +24,7 @@ export default function Home() {
       <Head>
         <title>Lorem Ipsum System</title>
       </Head>
-      <div className="relative flex flex-col lg:flex-row h-screen lg:overflow-hidden">
+      <main className="relative flex flex-col lg:flex-row h-screen lg:overflow-hidden text-gray-900">
         {/*First*/}
         <div className="w-full h-screen bg-gray-50 p-6 lg:p-8 lg:basis-1/4 lg:overflow-y-hidden">
           <div className="flex flex-row justify-between">
@@ -302,7 +302,7 @@ export default function Home() {
             <Calendar />
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

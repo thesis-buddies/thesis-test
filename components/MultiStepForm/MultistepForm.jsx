@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import StepWizard from "react-step-wizard";
 
@@ -7,7 +7,6 @@ import StepWizard from "react-step-wizard";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
-import Step4 from "./Steps/Step4";
 
 const MultistepForm = () => {
   const [formData, setFormData] = useState({
@@ -53,9 +52,9 @@ const MultistepForm = () => {
         <Step1 onFormChange={handleFormChange} />
         <Step2 onFormChange={handleFormChange} />
         <Step3 onFormChange={handleFormChange} />
-        <Step4 onFormChange={handleFormChange} />
       </StepWizard>
       <div className="max-w-xs">{JSON.stringify(formData)}</div>
+
 
       <div></div>
     </>
