@@ -1,4 +1,9 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import React from "react";
+import { useState } from "react";
+import Link from "next/link";
+import Head from "next/head";
+
+import MultistepForm from "../../components/MultiStepForm/MultistepForm";
 
 import { CgProfile as Profile } from "react-icons/cg";
 import { FiSearch as Search } from "react-icons/fi";
@@ -8,16 +13,18 @@ import { FiEdit as Edit } from "react-icons/fi";
 import { FiTool as Services } from "react-icons/fi";
 import { FiSettings as Settings } from "react-icons/fi";
 import { FiBell as Notification } from "react-icons/fi";
-import { FiArrowRight as ArrowRight } from "react-icons/fi";
+import { FiLogOut as Logout } from "react-icons/fi";
 
-const Side = () => {
+const index = () => {
   const [show, setShow] = useState(false);
   return (
     <>
-      {/*Main*/}
+      <Head>
+        <title>Lorem Ipsum System</title>
+      </Head>
       <div className="relative flex flex-col lg:flex-row h-screen lg:overflow-hidden">
         {/*First*/}
-        <div className="w-full h-screen bg-gray-50 p-6 lg:p-8 lg:basis-1/4 lg:overflow-y-hidden">
+        <div className="w-full h-fit lg:h-screen bg-gray-50 p-6 lg:p-8 lg:basis-1/4 lg:overflow-y-hidden">
           <div className="flex flex-row justify-between">
             {/*Mobile NavBar*/}
             <div className="lg:hidden">
@@ -69,14 +76,14 @@ const Side = () => {
                     show ? " -translate-x-96" : "-translate-x-6"
                   } fixed left-6 bottom-0 top-0 bg-gray-50 transform ease-in-out transition duration-500 flex justify-between flex-col`}
                 >
-                  <div className="flex flex-col justify-start items-start p-8 pt-4 w-full space-y-5">
+                  <div className="flex flex-col justify-start items-start p-8 pt-4 w-full space-y-4">
                     <button
                       id="close"
                       onClick={() => setShow(!show)}
                       aria-label="close"
                       className={`${
                         show ? "hidden" : ""
-                      } focus:outline-none flex flex-grow justify-start w-full py-4 px-3`}
+                      } focus:outline-none flex flex-grow justify-start w-full p-3`}
                     >
                       <svg
                         className="text-teal-500 w-8 h-8 block"
@@ -103,25 +110,29 @@ const Side = () => {
                       <input
                         type="text"
                         placeholder="Search"
-                        className="placeholder-teal-800 text-base placeholder-text-base leading-4 py-3 w-full pl-16 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600 rounded sm:visible"
+                        className="placeholder-teal-800 text-base placeholder-text-base leading-4 py-3 w-full pl-16 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-600 rounded-md sm:visible"
                       />
                       <Search className="absolute left-4 text-xl text-gray-800"></Search>
                     </div>
+                    <Link href={"/"}>
+                      <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4 items-center space-x-6 w-full ">
+                        <Dashboard className="text-2xl"></Dashboard>
+                        <p className="text-base leading-4 ">Dashboard</p>
+                      </button>
+                    </Link>
+                    <Link href={"/add"}>
+                      <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  items-center w-full  space-x-6">
+                        <Add className="text-2xl"></Add>
+                        <p className="text-base leading-4 ">Add QR Code</p>
+                      </button>
+                    </Link>
 
-                    <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4 items-center space-x-6 w-full ">
-                      <Dashboard className="text-2xl"></Dashboard>
-                      <p className="text-base leading-4 ">Dashboard</p>
-                    </button>
-
-                    <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  items-center w-full  space-x-6">
-                      <Add className="text-2xl"></Add>
-                      <p className="text-base leading-4 ">Add QR Code</p>
-                    </button>
-
-                    <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
-                      <Edit className="text-2xl"></Edit>
-                      <p className="text-base leading-4  ">Manage</p>
-                    </button>
+                    <Link href={"/manage"}>
+                      <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
+                        <Edit className="text-2xl"></Edit>
+                        <p className="text-base leading-4  ">Manage</p>
+                      </button>
+                    </Link>
 
                     <button className="flex justify-start items-center space-x-6 hover:text-white focus:outline-none focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  w-full ">
                       <Services className="text-2xl"></Services>
@@ -142,29 +153,14 @@ const Side = () => {
                       <Notification className="text-2xl"></Notification>
                       <p className="text-base leading-4  ">Notifications</p>
                     </button>
-                  </div>
-                  {/*Omit this one and change to log out button */}
-                  <div className="flex bg-teal-700 justify-start space-x-2 items-center py-4 px-3.5 w-full">
-                    <div>
-                      <img
-                        src="https://i.ibb.co/fxrbS6p/Ellipse-2-2.png"
-                        alt="avatar"
-                      />
+                    <div className="w-full py-5">
+                      <div className="flex bg-teal-600 rounded space-x-2 items-center justify-center py-2 w-full">
+                        <div className="flex items-center space-x-1">
+                          {/* <Logout className="text-white"></Logout> */}
+                          <p className="text-white text-sm">Log out</p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex flex-col justify-start items-start space-y-2">
-                      <p className="cursor-pointer text-base leading-4 text-white">
-                        Alexis Enache
-                      </p>
-                      <p className="cursor-pointer text-xs leading-3 text-gray-200">
-                        alexis _enache@gmail.com
-                      </p>
-                    </div>
-                    <button
-                      aria-label="visit"
-                      className=" focus:ring-2 focus:outline-none hover:bg-teal-800 p-2.5 bg-teal-600 rounded-full"
-                    >
-                      <ArrowRight className="text-xl text-white"></ArrowRight>
-                    </button>
                   </div>
                 </div>
               </div>
@@ -188,33 +184,42 @@ const Side = () => {
           {/*LG Screen SideBar*/}
           <div className="hidden lg:block">
             <div className="flex flex-col justify-start items-start py-8 px-4 w-full space-y-5">
-              <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4 items-center space-x-6 w-full ">
-                <Dashboard className="text-2xl"></Dashboard>
-                <p className="text-base leading-4 ">Dashboard</p>
-              </button>
+              <Link href={"/"}>
+                <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4 items-center space-x-6 w-full ">
+                  <Dashboard className="text-2xl"></Dashboard>
+                  <p className="text-base leading-4 ">Dashboard</p>
+                </button>
+              </Link>
 
-              <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  items-center w-full  space-x-6">
-                <Add className="text-2xl"></Add>
-                <p className="text-base leading-4 ">Add QR Code</p>
-              </button>
-
-              <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
-                <Edit className="text-2xl"></Edit>
-                <p className="text-base leading-4  ">Manage</p>
-              </button>
-
-              <button className="flex justify-start items-center space-x-6 hover:text-white focus:outline-none focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  w-full ">
-                <Services className="text-2xl"></Services>
-                <p className="text-base leading-4  ">Services</p>
-              </button>
+              <Link href={"/add"}>
+                <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-white rounded py-3 pl-4 bg-teal-500  items-center w-full  space-x-6">
+                  <Add className="text-2xl"></Add>
+                  <p className="text-base leading-4 ">Add QR Code</p>
+                </button>
+              </Link>
+              <Link href={"/manage"}>
+                <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
+                  <Edit className="text-2xl"></Edit>
+                  <p className="text-base leading-4  ">Manage</p>
+                </button>
+              </Link>
+              <Link href={"/serv"}>
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:outline-none focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  w-full ">
+                  <Services className="text-2xl"></Services>
+                  <p className="text-base leading-4  ">Services</p>
+                </button>
+              </Link>
 
               <div className="w-full">
                 <hr className=" border-gray-200 w-full" />
               </div>
-              <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
-                <Settings className="text-2xl"></Settings>
-                <p className="text-base leading-4  ">Settings</p>
-              </button>
+              <Link href={"/set"}>
+                <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
+                  <Settings className="text-2xl"></Settings>
+                  <p className="text-base leading-4  ">Settings</p>
+                </button>
+              </Link>
+
               <div className="w-full sm:hidden">
                 <hr className=" border-gray-200 w-full" />
               </div>
@@ -226,62 +231,49 @@ const Side = () => {
           </div>
         </div>
         {/*Second*/}
-        <div className="flex flex-col lg:h-screen bg-gray-100 lg:basis-1/2 lg:overflow-y-scroll">
-          <div className="w-full p-8 flex flex-col justify-center space-y-8 rounded">
+        <div className="flex flex-col w-full h-screen p-8 lg:h-screen bg-gray-100 scroll-smooth lg:basis-3/4 lg:overflow-y-scroll">
+          <div className="w-full flex justify-between rounded">
             {/*Greetings*/}
-            <div class="flex flex-col items-start">
-              <span class=" text-xl font-bold">
+            <div className="flex flex-col items-start">
+              <span className=" text-xl font-bold">
                 Good Afternoon, Rose Shorts 👋
               </span>
-              <p class=" text-xs font-light">
+              <p className=" text-xs font-light">
                 Welcome back to Lorem Ipsum System!
               </p>
             </div>
-            {/*First Box*/}
-            <div>
-              <p className=" text-sm font-semibold text-teal-500 pb-1">
-                Summary
-              </p>
-              <div className="bg-white w-full h-48 rounded-xl flex justify-center items-center shadow-xl shadow-slate-300/30">
-                Box 1
+            <div className="items-center flex justify-center space-x-4">
+              <div className="relative focus:outline-none flex jusitfy-start w-fit rounded items-center focus:border-teal-300/75 sm:visible">
+                <input
+                  type="text"
+                  placeholder="Search here"
+                  className=" text-gray-700 placeholder:text-gray-400 border-0 text-sm placeholder-text-base leading-4 w-48 pl-12 focus:border-none focus:ring-2 focus:ring-teal-500 rounded-full sm:visible"
+                />
+                <Search className="absolute left-4 text-lg "></Search>
               </div>
-            </div>
-            <div>
-              <p className=" text-sm font-semibold text-teal-500 pb-1">
-                Summary
-              </p>
-              <div className="bg-white w-full h-48 rounded-xl flex justify-center items-center shadow-xl shadow-slate-300/30">
-                Box 2
+              <div className="flex flex-row flex-shrink-0 items-center">
+                <button className=" hover:text-teal-600 ">
+                  <Notification className="text-xl"></Notification>
+                </button>
               </div>
-            </div>
-            <div>
-              <p className=" text-sm font-semibold text-teal-500 pb-1">
-                Summary
-              </p>
-              <div className="bg-white w-full h-48 rounded-xl flex justify-center items-center shadow-xl shadow-slate-300/30">
-                Box 3
+              <div className="flex flex-shrink-0 items-center">
+                <button className=" hover:text-teal-600 ">
+                  <Profile className="text-2xl"></Profile>
+                </button>
               </div>
             </div>
           </div>
-        </div>
-        {/*Third*/}
-        <div className="hidden h-screen bg-gray-50 lg:block lg:p-8 lg:basis-1/4 lg:overflow-y-scroll">
-          <div className="flex flex-row justify-center space-x-4">
-            <div className="flex flex-grow items-center">
-              <input
-                className="p-2 rounded-md"
-                type="text"
-                name="search"
-                id="Search"
-                placeholder="Search"
-              ></input>
+
+          <div className="flex flex-col space-y-4">
+            <div className="flex flex-col justify-center items-center py-6">
+              <h1 className="text-3xl">Add QR Code</h1>
+              <p className="text-xs">
+                Please fill the form below to generate your QR code. Feel free
+                to add as much detail as needed.
+              </p>
             </div>
-            <button className="flex flex-shrink-0 items-center">
-              <Notification className="text-xl"></Notification>
-            </button>
-            <button className="flex flex-shrink-0 items-center">
-              <Profile className="text-2xl"></Profile>
-            </button>
+
+            <MultistepForm></MultistepForm>
           </div>
         </div>
       </div>
@@ -289,4 +281,4 @@ const Side = () => {
   );
 };
 
-export default Side;
+export default index;

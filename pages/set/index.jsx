@@ -1,12 +1,8 @@
-import Head from "next/head";
+import React from "react";
+import { useState } from "react";
 import Link from "next/link";
-import React, { useState } from "react";
+import Head from "next/head";
 
-//components
-import Modal from "../components/widgets/modal";
-import Calendar from "../components/widgets/calendar";
-
-//icons
 import { CgProfile as Profile } from "react-icons/cg";
 import { FiSearch as Search } from "react-icons/fi";
 import { FiGrid as Dashboard } from "react-icons/fi";
@@ -17,7 +13,7 @@ import { FiSettings as Settings } from "react-icons/fi";
 import { FiBell as Notification } from "react-icons/fi";
 import { FiLogOut as Logout } from "react-icons/fi";
 
-export default function Home() {
+const index = () => {
   const [show, setShow] = useState(false);
   return (
     <>
@@ -26,7 +22,7 @@ export default function Home() {
       </Head>
       <div className="relative flex flex-col lg:flex-row h-screen lg:overflow-hidden">
         {/*First*/}
-        <div className="w-full h-screen bg-gray-50 p-6 lg:p-8 lg:basis-1/4 lg:overflow-y-hidden">
+        <div className="w-full h-fit lg:h-screen bg-gray-50 p-6 lg:p-8 lg:basis-1/4 lg:overflow-y-hidden">
           <div className="flex flex-row justify-between">
             {/*Mobile NavBar*/}
             <div className="lg:hidden">
@@ -116,41 +112,34 @@ export default function Home() {
                       />
                       <Search className="absolute left-4 text-xl text-gray-800"></Search>
                     </div>
-                    <Link href={"/"}>
-                      <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4 items-center space-x-6 w-full ">
-                        <Dashboard className="text-2xl"></Dashboard>
-                        <p className="text-base leading-4 ">Dashboard</p>
-                      </button>
-                    </Link>
-                    <Link href={"/add"}>
-                      <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  items-center w-full  space-x-6">
-                        <Add className="text-2xl"></Add>
-                        <p className="text-base leading-4 ">Add QR Code</p>
-                      </button>
-                    </Link>
-                    <Link href={"/manage"}>
-                      <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
-                        <Edit className="text-2xl"></Edit>
-                        <p className="text-base leading-4  ">Manage</p>
-                      </button>
-                    </Link>
-                    <Link href={"/serv"}>
-                      <button className="flex justify-start items-center space-x-6 hover:text-white focus:outline-none focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  w-full ">
-                        <Services className="text-2xl"></Services>
-                        <p className="text-base leading-4  ">Services</p>
-                      </button>
-                    </Link>
+
+                    <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4 items-center space-x-6 w-full ">
+                      <Dashboard className="text-2xl"></Dashboard>
+                      <p className="text-base leading-4 ">Dashboard</p>
+                    </button>
+
+                    <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  items-center w-full  space-x-6">
+                      <Add className="text-2xl"></Add>
+                      <p className="text-base leading-4 ">Add QR Code</p>
+                    </button>
+
+                    <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
+                      <Edit className="text-2xl"></Edit>
+                      <p className="text-base leading-4  ">index</p>
+                    </button>
+
+                    <button className="flex justify-start items-center space-x-6 hover:text-white focus:outline-none focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  w-full ">
+                      <Services className="text-2xl"></Services>
+                      <p className="text-base leading-4  ">Services</p>
+                    </button>
 
                     <div className="w-full">
                       <hr className=" border-gray-200 w-full" />
                     </div>
-                    <Link href={"/set"}>
-                      <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
-                        <Settings className="text-2xl"></Settings>
-                        <p className="text-base leading-4  ">Settings</p>
-                      </button>
-                    </Link>
-
+                    <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
+                      <Settings className="text-2xl"></Settings>
+                      <p className="text-base leading-4  ">Settings</p>
+                    </button>
                     <div className="w-full sm:hidden">
                       <hr className=" border-gray-200 w-full" />
                     </div>
@@ -190,25 +179,27 @@ export default function Home() {
           <div className="hidden lg:block">
             <div className="flex flex-col justify-start items-start py-8 px-4 w-full space-y-5">
               <Link href={"/"}>
-                <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-white bg-teal-500 rounded py-3 pl-4 items-center space-x-6 w-full ">
+                <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4 items-center space-x-6 w-full ">
                   <Dashboard className="text-2xl"></Dashboard>
                   <p className="text-base leading-4 ">Dashboard</p>
                 </button>
               </Link>
+
               <Link href={"/add"}>
-                <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  items-center w-full  space-x-6">
+                <button className="focus:outline-none flex jusitfy-start hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4 items-center w-full  space-x-6">
                   <Add className="text-2xl"></Add>
                   <p className="text-base leading-4 ">Add QR Code</p>
                 </button>
               </Link>
+
               <Link href={"/manage"}>
-                <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
+                <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600  rounded  py-3 pl-4  w-full ">
                   <Edit className="text-2xl"></Edit>
                   <p className="text-base leading-4  ">Manage</p>
                 </button>
               </Link>
               <Link href={"/serv"}>
-                <button className="flex justify-start items-center space-x-6 hover:text-white focus:outline-none focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded py-3 pl-4  w-full ">
+                <button className="flex justify-start items-center space-x-6 hover:text-white focus:outline-none focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600  rounded py-3 pl-4  w-full ">
                   <Services className="text-2xl"></Services>
                   <p className="text-base leading-4  ">Services</p>
                 </button>
@@ -218,7 +209,7 @@ export default function Home() {
                 <hr className=" border-gray-200 w-full" />
               </div>
               <Link href={"/set"}>
-                <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
+                <button className="focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-white bg-teal-500 rounded  py-3 pl-4  w-full ">
                   <Settings className="text-2xl"></Settings>
                   <p className="text-base leading-4  ">Settings</p>
                 </button>
@@ -227,17 +218,15 @@ export default function Home() {
               <div className="w-full sm:hidden">
                 <hr className=" border-gray-200 w-full" />
               </div>
-              <Link href={"/"}>
-                <button className=" sm:hidden focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
-                  <Notification className="text-2xl"></Notification>
-                  <p className="text-base leading-4  ">Notifications</p>
-                </button>
-              </Link>
+              <button className=" sm:hidden focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-teal-500 focus:text-white hover:bg-teal-500 text-gray-600 rounded  py-3 pl-4  w-full ">
+                <Notification className="text-2xl"></Notification>
+                <p className="text-base leading-4  ">Notifications</p>
+              </button>
             </div>
           </div>
         </div>
         {/*Second*/}
-        <div className="flex flex-col lg:h-screen bg-gray-100 scroll-smooth lg:basis-1/2 lg:overflow-y-scroll">
+        <div className="flex flex-col w-full h-screen lg:h-screen bg-gray-100 scroll-smooth lg:basis-3/4 lg:overflow-y-scroll">
           <div className="w-full p-8 flex flex-col justify-center space-y-8 rounded">
             {/*Greetings*/}
             <div className="flex flex-col items-start">
@@ -249,60 +238,13 @@ export default function Home() {
               </p>
             </div>
             {/*First Box*/}
-            <div>
-              <p className=" text-sm font-semibold text-teal-600 pb-1">
-                Content 1
-              </p>
-              <div className="bg-white w-full h-48 rounded-xl flex justify-center items-center shadow-xl shadow-slate-300/30">
-                Box 1
-              </div>
-            </div>
-            <div>
-              <p className=" text-sm font-semibold text-teal-600 pb-1">
-                Content 2
-              </p>
-              <div className="bg-white w-full h-48 rounded-xl flex justify-center items-center shadow-xl shadow-slate-300/30">
-                Box 2
-              </div>
-            </div>
-            <div>
-              <p className=" text-sm font-semibold text-teal-600 pb-1">
-                Content 3
-              </p>
-              <div className="bg-white w-full h-48 rounded-xl flex justify-center items-center shadow-xl shadow-slate-300/30">
-                Box 3
-              </div>
-            </div>
+            <div>Settings Page</div>
           </div>
         </div>
         {/*Third*/}
-        <div className="hidden h-screen bg-gray-50 lg:block p-8 px-10 lg:basis-1/4 lg:overflow-y-scroll space-y-8">
-          <div className="flex justify-between">
-            <div className="relative focus:outline-none flex jusitfy-start w-fit rounded items-center focus:border-teal-300/75 sm:visible">
-              <input
-                type="text"
-                placeholder="Search here"
-                className=" text-gray-700 placeholder:text-gray-400 border-0 text-sm placeholder-text-base leading-4 w-48 pl-12 focus:border-none focus:ring-2 focus:ring-teal-500 rounded-full sm:visible"
-              />
-              <Search className="absolute left-4 text-lg "></Search>
-            </div>
-            <div className="flex flex-row flex-shrink-0 items-center">
-              <button className=" hover:text-teal-600 ">
-                <Notification className="text-xl"></Notification>
-              </button>
-            </div>
-            <div className="flex flex-shrink-0 items-center">
-              <button className=" hover:text-teal-600 ">
-                <Profile className="text-2xl"></Profile>
-              </button>
-            </div>
-          </div>
-          <div className="">
-            <p className="font-semibold text-sm text-teal-600 py-2">Calendar</p>
-            <Calendar />
-          </div>
-        </div>
       </div>
     </>
   );
-}
+};
+
+export default index;
