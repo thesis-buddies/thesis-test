@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState } from "react";
+import {QRCodeSVG} from 'qrcode.react';
 import { FiCheck, FiChevronLeft } from "react-icons/fi";
 
 const Step3 = ({
@@ -13,6 +13,13 @@ const Step3 = ({
   lastStep,
   onFormChange,
 }) => {
+
+  const [isQRBtnClicked, setQRBtnStatus] = useState(false)
+
+  const generateQRCode = () => {
+    setQRBtnStatus(true)
+  }
+
   return (
     <>
       <div className="p-10 bg-white rounded-2xl">
@@ -21,7 +28,11 @@ const Step3 = ({
 
         {/* <h1>{typeof isActive}</h1> */}
         <div className="py-8 flex flex-col items-center space-y-4">
-          <div className="w-36 h-36 bg-blue-500"></div>
+          {
+            isQRBtnClicked ?
+            <QRCodeSVG value="https://reactjs.org/"/>
+            : <div className="w-36 h-36 bg-blue-500"></div>
+          }
           <h1>Generate QR Code</h1>
           <p className="text-center">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -29,7 +40,7 @@ const Step3 = ({
             consectetur feugiat fusce mattis massa id. Leo.
           </p>
           <button
-            onClick={nextStep}
+            onClick={generateQRCode}
             className="w-32 h-12 text-white bg-blue-500"
             type="submit"
           >
@@ -37,7 +48,7 @@ const Step3 = ({
           </button>
         </div>
 
-        {/* <div className="flex flex-col">
+        {/* <div className="flex fle x-col">
           <span>
             <input
               id="asthma"
